@@ -35,7 +35,7 @@ if (is_post_request()) {
     <form action="<?php echo url_for('/staff/subjects/edit.php?id=' . h(u($_GET['id'])))?>" method="post">
       <dl>
         <dt>Menu Name</dt>
-        <dd><input type="text" name="menu_name" value="<?php echo $menu_name?>" /></dd>
+        <dd><input type="text" name="menu_name" value="<?php echo h($name_name)?>" /></dd>
       </dl>
       <dl>
         <dt>Position</dt>
@@ -53,7 +53,7 @@ if (is_post_request()) {
 
           <!-- // the below is a teqnique to prevent php dispaching the "visible" with no value -->
           <input type="hidden" name="visible" value="0" />
-          <input type="checkbox" name="visible" value="1" <?php echo $visible === '1' ? 'checked' : ''?>/>
+          <input type="checkbox" name="visible" value="1" <?php echo $visible==='1' ? 'checked' : '' ?>/>
         </dd>
       </dl>
       <div id="operations">
