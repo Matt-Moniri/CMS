@@ -1,12 +1,7 @@
 <?php require_once('../../../private/initialize.php'); ?>
-<?php
-$subjects = [
-  ['id' => '1', 'position' => '1', 'visible' => '1', 'menu_name' => 'About Globe Bank'],
-  ['id' => '2', 'position' => '2', 'visible' => '1', 'menu_name' => 'Consumer'],
-  ['id' => '3', 'position' => '3', 'visible' => '1', 'menu_name' => 'Small Business'],
-  ['id' => '4', 'position' => '4', 'visible' => '1', 'menu_name' => 'Commercial'],
-];
-?>
+<?php $subjects_set = find_all_subjects()?>
+
+
 
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -33,7 +28,7 @@ $subjects = [
         <th>&nbsp;</th>
       </tr>
 
-      <?php foreach ($subjects as $subject) { ?>
+      <?php while ($subject = mysqli_fetch_assoc($subjects_set)) { ?>
       <tr>
         <td>
           <?php echo htmlspecialchars($subject['id']); ?>
@@ -55,8 +50,11 @@ $subjects = [
       </tr>
       <?php
 }?>
-    </table>
 
+    </table>
+    <?php mysqli_free_result($subjects_set);
+?>
   </div>
 </div>
-<?php include('../../../private/shared/staff_footer.php')?>
+<?php
+include('../../../private/shared/staff_footer.php')?>

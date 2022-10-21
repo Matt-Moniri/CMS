@@ -21,4 +21,10 @@ $doc_root = substr($_SERVER['SCRIPT_NAME'], 0, $public_end);
 define("WWW_ROOT", $doc_root);
 // define("WWW_ROOT", $doc_root);
 ?>
-<?php require_once('functions.php')?>
+<?php
+require_once('functions.php');
+require_once('database.php');
+require_once('query_functions.php');
+$db = connect_to_db();
+
+?>

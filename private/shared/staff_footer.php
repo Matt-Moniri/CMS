@@ -11,3 +11,5 @@
 </body>
 
 </html>
+
+<?php close_connection($db)?>
