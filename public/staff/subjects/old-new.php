@@ -1,0 +1,49 @@
+<?php require_once('../../../private/initialize.php');
+$subjects_num = mysqli_num_rows(find_all_subjects());
+
+?>
+
+<?php $page_title = 'Create Subject'; ?>
+<?php include(SHARED_PATH . '/staff_header.php'); ?>
+
+<div id="content">
+
+  <a class="back-link" href="<?php echo url_for('/staff/subjects/index.php'); ?>">&laquo; Back to List</a>
+
+  <div class="subject new">
+    <h1>Create Subject</h1>
+
+    <form action="<?php echo url_for('staff/subjects/create.php')?>" method="post">
+      <dl>
+        <dt>Menu Name</dt>
+        <dd><input type="text" name="menu_name" value="" /></dd>
+      </dl>
+      <dl>
+        <dt>Position</dt>
+        <dd>
+          <select name="position">
+            <?php
+for ($i = 1; $i < $subjects_num + 1 + 1; $i++) {
+  echo "<option value=" . $i . ">" . $i . "</option>";
+
+}?>
+          </select>
+        </dd>
+      </dl>
+      <dl>
+        <dt>Visible</dt>
+        <dd>
+          <input type="hidden" name="visible" value="0" />
+          <input type="checkbox" name="visible" value="1" />
+        </dd>
+      </dl>
+      <div id="operations">
+        <input type="submit" value="Create Subject" />
+      </div>
+    </form>
+
+  </div>
+
+</div>
+
+<?php include(SHARED_PATH . '/staff_footer.php'); ?>

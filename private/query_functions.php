@@ -45,20 +45,26 @@ function find_page_by_id($id)
 
 }
 
-function insert_new_subject($menu_name, $position, $visible)
+function insert_new_subject($subject)
 {
+  $errors = validate_subject($subject);
+  if (!empty($errors)) {
+    return $errors;
+  }
+
   global $db;
   $sql = "INSERT INTO subjects (menu_name,position,visible) ";
-  $sql .= "VALUES ('" . $menu_name . "','" . $position . "','" . $visible . "');";
+  $sql .= "VALUES ('" . $subject['menu_name'] . "','" . $subject['position'] . "','" . $subject['visible'] . "');";
   $result = mysqli_query($db, $sql);
   if ($result) {
     $id = mysqli_insert_id($db);
     redirect_to(url_for('/staff/subjects/show.php?id=' . u(h($id))));
   }
   else {
-    redirect_to(url_for('/staff/subjects/new.php'));
+    $errors = [];
+    $errors[] = mysqli_error($db);
+    return $errors;
   }
-  return;
 }
 
 function insert_new_page($page)
@@ -80,6 +86,10 @@ function insert_new_page($page)
 }
 function update_subject($subject)
 {
+  $errors = validate_subject($subject);
+  if (!empty($errors)) {
+    return $errors;
+  }
   global $db;
   $sql = "UPDATE subjects ";
   $sql .= "SET menu_name='" . $subject['menu_name'] . "', ";
@@ -93,10 +103,11 @@ function update_subject($subject)
     redirect_to(url_for("/staff/subjects/show.php?id=" . $subject['id'] . "&event=Editsuccessful"));
   }
   else {
-    $error = mysqli_error($db);
+    $errors = [];
+    $errors[] = mysqli_error($db);
     mysqli_free_result($result);
     close_connection($db);
-    redirect_to(url_for("/staff/subjects/edit.php?id=" . $subject['id'] . "&event=error" . $error));
+    return $errors;
 
   }
 
@@ -148,5 +159,36 @@ function delete_page_by_id($id)
   $sql .= "LIMIT 1;";
   $result = mysqli_query($db, $sql);
   return $result;
+}
+function validate_subject($subject)
+{
+  $errors = [];
+
+  // menu_name
+  if (is_blank($subject['menu_name'])) {
+    $errors[] = "Name cannot be blank.";
+  }
+  elseif (!has_length($subject['menu_name'], ['min' => 2, 'max' => 255])) {
+    $errors[] = "Name must be between 2 and 255 characters.";
+  }
+
+  // position
+  // Make sure we are working with an integer
+  $postion_int = (int)$subject['position'];
+  if ($postion_int <= 0) {
+    $errors[] = "Position must be greater than zero.";
+  }
+  if ($postion_int > 999) {
+    $errors[] = "Position must be less than 999.";
+  }
+
+  // visible
+  // Make sure we are working with a string
+  $visible_str = (string)$subject['visible'];
+  if (!has_inclusion_of($visible_str, ["0", "1"])) {
+    $errors[] = "Visible must be true or false.";
+  }
+
+  return $errors;
 }
 ?>

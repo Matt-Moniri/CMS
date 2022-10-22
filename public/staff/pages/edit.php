@@ -63,13 +63,10 @@ for ($i = 1; $i < $pages_num + 1; $i++) {
             <dt>Subject ID</dt>
             <dd>
               <select name="subject_id">
-                <?php
-for ($i = 1; $i < $pages_num + 1; $i++) {
+                <?php for ($i = 1; $i < 3 + 1; $i++) {
   $selected = $i == $page['subject_id'] ? "selected" : "no";
-
   echo "<option " . $selected . " value=" . $i . ">" . $i . "</option>";
-}
-?>
+}?>
 
 
 

@@ -12,6 +12,11 @@ if (is_post_request()) {
   echo '<br>position= ' . $position;
   echo '<br>visible= ' . $visible;
 }
+else {
+  $page = find_page_by_id($page['id']);
+  $page_set = find_all_pages();
+  $pages_num = mysqli_num_rows($page_set);
+}
 ?>
 <?php $page_title = 'Create New Page'?>
 <?php include(SHARED_PATH . '/staff_header.php'); ?>
@@ -38,9 +43,16 @@ if (is_post_request()) {
         <dt>Position</dt>
         <dd>
           <select name="position">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
+            <?php
+for ($i = 1; $i < $pages_num + 1 + 1; $i++) {
+  $selected = $i == $page['position'] ? "selected" : "no";
+
+  echo "<option " . $selected . " value=" . $i . ">" . $i . "</option>";
+}
+?>
+
+
+
           </select>
         </dd>
       </dl>
