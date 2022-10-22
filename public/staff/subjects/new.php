@@ -1,15 +1,7 @@
 <?php require_once('../../../private/initialize.php');
-$test = $_GET["test"] ?? '';
-if ($test == '404') {
-  error_404();
-}
-elseif ($test == '500') {
-  error_500();
-}
-elseif ($test == 'redirect') {
-  redirect_to(url_for("/staff/subjects/index.php"));
-}?>
+$subjects_num = mysqli_num_rows(find_all_subjects());
 
+?>
 
 <?php $page_title = 'Create Subject'; ?>
 <?php include(SHARED_PATH . '/staff_header.php'); ?>
@@ -30,7 +22,11 @@ elseif ($test == 'redirect') {
         <dt>Position</dt>
         <dd>
           <select name="position">
-            <option value="1">1</option>
+            <?php
+for ($i = 1; $i < $subjects_num + 1 + 1; $i++) {
+  echo "<option value=" . $i . ">" . $i . "</option>";
+
+}?>
           </select>
         </dd>
       </dl>

@@ -2,6 +2,7 @@
 if (!isset($_GET['id'])) {
   redirect_to(url_for('staff/subjects/index.php'));
 }
+$subjects_num = mysqli_num_rows(find_all_subjects());
 $subject = [];
 $subject['id'] = $_GET['id'];
 $last_event = $_GET['event'];
@@ -42,9 +43,11 @@ $subject = find_subject_by_id($subject['id'])
         <dt>Position</dt>
         <dd>
           <select name="position">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
+            <?php
+for ($i = 1; $i < $subjects_num + 1; $i++) {
+  echo "<option value=" . $i . ">" . $i . "</option>";
+
+}?>
           </select>
         </dd>
       </dl>

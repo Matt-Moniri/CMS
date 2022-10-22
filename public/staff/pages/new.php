@@ -21,11 +21,15 @@ if (is_post_request()) {
   <a class="back-link" href="<?php echo url_for('/staff/pages/index.php'); ?>">&laquo; Back to List</a>
 
   <div class="page edit">
+    <h3>
+      --
+      <?php echo $_GET['event']?>
+    </h3>
     <h1>
       <?php echo 'Create a new page'?>
     </h1>
 
-    <form action="<?php echo url_for('/staff/pages/new.php?')?>" method="post">
+    <form action="<?php echo url_for('/staff/pages/create.php?')?>" method="post">
       <dl>
         <dt>Name</dt>
         <dd><input type="text" name="name" value="<?php echo h($name)?>" /></dd>
@@ -39,6 +43,18 @@ if (is_post_request()) {
             <option value="3">3</option>
           </select>
         </dd>
+      </dl>
+      <dl>
+        <dt>Subject ID</dt>
+        <dd><select name="subject_id">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select></dd>
+      </dl>
+      <dl>
+        <dt>Content</dt>
+        <dd><textarea name="content" value=""></textarea></dd>
       </dl>
       <dl>
         <dt>Visible</dt>
