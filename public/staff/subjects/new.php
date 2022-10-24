@@ -1,5 +1,6 @@
 <?php require_once('../../../private/initialize.php');
-
+var_dump(addslashes("=';:   |"));
+var_dump(mysqli_real_escape_string($db, "=';:  |"));
 $subjects_num = mysqli_num_rows(find_all_subjects());
 $subject = [];
 $last_event = $_GET['event'];
@@ -10,15 +11,14 @@ if (is_post_request()) {
   $subject['visible'] = $_POST['visible'];
   $errors = insert_new_subject($subject);
 
-}
-else {
+} else {
 }
 
 
 ?>
 
 
-<?php $page_title = 'Create New Subject'?>
+<?php $page_title = 'Create New Subject' ?>
 <?php include(SHARED_PATH . '/staff_header.php'); ?>
 
 <div id="content">
@@ -27,16 +27,16 @@ else {
 
   <div class="subject new">
     <h3>
-      <?php echo $last_event?>
+      <?php echo $last_event ?>
     </h3>
     <h1>
-      <?php echo 'New Subject'?>
+      <?php echo 'New Subject' ?>
     </h1>
     <?php echo display_errors($errors); ?>
-    <form action="<?php echo url_for('/staff/subjects/new.php?')?>" method="post">
+    <form action="<?php echo url_for('/staff/subjects/new.php?') ?>" method="post">
       <dl>
         <dt>Menu Name</dt>
-        <dd><input type="text" name="menu_name" value="<?php echo h($subject['menu_name'])?>" /></dd>
+        <dd><input type="text" name="menu_name" value="<?php echo h($subject['menu_name']) ?>" /></dd>
       </dl>
       <dl>
         <dt>Position</dt>
@@ -47,8 +47,8 @@ for ($i = 1; $i < $subjects_num + 1 + 1; $i++) {
   $selected = $i == $page['position'] ? "selected" : "no";
 
   echo "<option " . $selected . " value=" . $i . ">" . $i . "</option>";
-}
-?>
+            }
+            ?>
           </select>
         </dd>
       </dl>
@@ -58,7 +58,7 @@ for ($i = 1; $i < $subjects_num + 1 + 1; $i++) {
 
           <!-- // the below is a teqnique to prevent php dispaching the "visible" with no value -->
           <input type="hidden" name="visible" value="0" />
-          <input type="checkbox" name="visible" value="1" <?php echo $subject['visible']==='1' ? 'checked' : '' ?>/>
+          <input type="checkbox" name="visible" value="1" <?php echo $subject['visible'] === '1' ? 'checked' : '' ?>/>
         </dd>
       </dl>
       <div id="operations">

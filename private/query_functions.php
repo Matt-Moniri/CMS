@@ -23,7 +23,7 @@ function find_subject_by_id($id)
 {
   global $db;
   $sql = "SELECT * FROM subjects ";
-  $sql .= " WHERE id='" . $id . "'";
+  $sql .= " WHERE id='" . mysqli_real_escape_string($db, $id) . "'";
   $result_set = mysqli_query($db, $sql);
   confirm_result_set($result_set);
   $subject = mysqli_fetch_assoc($result_set);
@@ -36,7 +36,7 @@ function find_page_by_id($id)
 {
   global $db;
   $sql = "SELECT * FROM pages ";
-  $sql .= " WHERE id='" . $id . "'";
+  $sql .= " WHERE id='" . mysqli_real_escape_string($db, $id) . "'";
   $result_set = mysqli_query($db, $sql);
   confirm_result_set($result_set);
   $subject = mysqli_fetch_assoc($result_set);
@@ -54,13 +54,14 @@ function insert_new_subject($subject)
 
   global $db;
   $sql = "INSERT INTO subjects (menu_name,position,visible) ";
-  $sql .= "VALUES ('" . $subject['menu_name'] . "','" . $subject['position'] . "','" . $subject['visible'] . "');";
+  $sql .= "VALUES ('" . mysqli_real_escape_string($db, $subject['menu_name']) . "','";
+  $sql .= mysqli_real_escape_string($db, $subject['position']) . "','";
+  $sql .= mysqli_real_escape_string($db, $subject['visible']) . "');";
   $result = mysqli_query($db, $sql);
   if ($result) {
     $id = mysqli_insert_id($db);
     redirect_to(url_for('/staff/subjects/show.php?id=' . u(h($id))));
-  }
-  else {
+  } else {
     $errors = [];
     $errors[] = mysqli_error($db);
     return $errors;
@@ -71,15 +72,18 @@ function insert_new_page($page)
 {
   global $db;
   $sql = "INSERT INTO pages (name,position,visible,subject_id,content) ";
-  $sql .= "VALUES ('" . $page['name'] . "','" . $page['position'] . "','" . $page['visible'] . "','" . $page['subject_id'] . "','" . $page['content'] . "');";
+  $sql .= "VALUES ('" . $page['name'] . "','";
+  $sql .= mysqli_real_escape_string($db, $page['position']) . "','";
+  $sql .= mysqli_real_escape_string($db, $page['visible']) . "','";
+  $sql .= mysqli_real_escape_string($db, $page['subject_id']) . "','";
+  $sql .= mysqli_real_escape_string($db, $page['content']) . "');";
 
   //exit($sql);
   $result = mysqli_query($db, $sql);
   if ($result) {
     $id = mysqli_insert_id($db);
     redirect_to(url_for('/staff/pages/show.php?id=' . u(h($id))));
-  }
-  else {
+  } else {
     redirect_to(url_for('/staff/pages/new.php?event=' . mysqli_error($db)));
   }
   return;
@@ -92,17 +96,16 @@ function update_subject($subject)
   }
   global $db;
   $sql = "UPDATE subjects ";
-  $sql .= "SET menu_name='" . $subject['menu_name'] . "', ";
-  $sql .= "position='" . $subject['position'] . "', ";
-  $sql .= "visible='" . $subject['visible'] . "' ";
-  $sql .= "WHERE id='" . $subject['id'] . "' ";
+  $sql .= "SET menu_name='" . mysqli_real_escape_string($db, $subject['menu_name']) . "', ";
+  $sql .= "position='" . mysqli_real_escape_string($db, $subject['position']) . "', ";
+  $sql .= "visible='" . mysqli_real_escape_string($db, $subject['visible']) . "' ";
+  $sql .= "WHERE id='" . mysqli_real_escape_string($db, $subject['id']) . "' ";
   $sql .= "LIMIT 1;";
   //exit($sql);
   $result = mysqli_query($db, $sql);
   if ($result) {
     redirect_to(url_for("/staff/subjects/show.php?id=" . $subject['id'] . "&event=Editsuccessful"));
-  }
-  else {
+  } else {
     $errors = [];
     $errors[] = mysqli_error($db);
     mysqli_free_result($result);
@@ -118,19 +121,18 @@ function update_page($page)
 {
   global $db;
   $sql = "UPDATE pages ";
-  $sql .= "SET name='" . $page['name'] . "', ";
-  $sql .= "position='" . $page['position'] . "', ";
-  $sql .= "visible='" . $page['visible'] . "', ";
-  $sql .= "subject_id='" . $page['subject_id'] . "', ";
-  $sql .= "content='" . $page['content'] . "' ";
-  $sql .= "WHERE id='" . $page['id'] . "' ";
+  $sql .= "SET name='" . mysqli_real_escape_string($db, $page['name']) . "', ";
+  $sql .= "position='" . mysqli_real_escape_string($db, $page['position']) . "', ";
+  $sql .= "visible='" . mysqli_real_escape_string($db, $page['visible']) . "', ";
+  $sql .= "subject_id='" . mysqli_real_escape_string($db, $page['subject_id']) . "', ";
+  $sql .= "content='" . mysqli_real_escape_string($db, $page['content']) . "' ";
+  $sql .= "WHERE id='" . mysqli_real_escape_string($db, $page['id']) . "' ";
   $sql .= "LIMIT 1;";
   //exit($sql);
   $result = mysqli_query($db, $sql);
   if ($result) {
     redirect_to(url_for("/staff/pages/show.php?id=" . $page['id'] . "&event=Editsuccessful"));
-  }
-  else {
+  } else {
     $error = mysqli_error($db);
     mysqli_free_result($result);
     close_connection($db);
@@ -145,7 +147,7 @@ function delete_subject_by_id($id)
 {
   global $db;
   $sql = "DELETE FROM subjects ";
-  $sql .= "WHERE id='" . $id . "' ";
+  $sql .= "WHERE id='" . mysqli_real_escape_string($db, $id) . "' ";
   $sql .= "LIMIT 1;";
   $result = mysqli_query($db, $sql);
   return $result;
@@ -155,7 +157,7 @@ function delete_page_by_id($id)
 {
   global $db;
   $sql = "DELETE FROM pages ";
-  $sql .= "WHERE id='" . $id . "' ";
+  $sql .= "WHERE id='" . mysqli_real_escape_string($db, $id) . "' ";
   $sql .= "LIMIT 1;";
   $result = mysqli_query($db, $sql);
   return $result;
@@ -167,14 +169,13 @@ function validate_subject($subject)
   // menu_name
   if (is_blank($subject['menu_name'])) {
     $errors[] = "Name cannot be blank.";
-  }
-  elseif (!has_length($subject['menu_name'], ['min' => 2, 'max' => 255])) {
+  } elseif (!has_length($subject['menu_name'], ['min' => 2, 'max' => 255])) {
     $errors[] = "Name must be between 2 and 255 characters.";
   }
 
   // position
   // Make sure we are working with an integer
-  $postion_int = (int)$subject['position'];
+  $postion_int = (int) $subject['position'];
   if ($postion_int <= 0) {
     $errors[] = "Position must be greater than zero.";
   }
@@ -184,7 +185,7 @@ function validate_subject($subject)
 
   // visible
   // Make sure we are working with a string
-  $visible_str = (string)$subject['visible'];
+  $visible_str = (string) $subject['visible'];
   if (!has_inclusion_of($visible_str, ["0", "1"])) {
     $errors[] = "Visible must be true or false.";
   }
