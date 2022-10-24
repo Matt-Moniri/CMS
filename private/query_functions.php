@@ -60,7 +60,7 @@ function insert_new_subject($subject)
   $result = mysqli_query($db, $sql);
   if ($result) {
     $id = mysqli_insert_id($db);
-    redirect_to(url_for('/staff/subjects/show.php?id=' . u(h($id))));
+    redirect_to(url_for('/staff/subjects/show.php?event=The new subject was successfully created! &id=' . u(h($id))));
   } else {
     $errors = [];
     $errors[] = mysqli_error($db);
@@ -86,7 +86,7 @@ function insert_new_page($page)
   $result = mysqli_query($db, $sql);
   if ($result) {
     $id = mysqli_insert_id($db);
-    redirect_to(url_for('/staff/pages/show.php?id=' . u(h($id))));
+    redirect_to(url_for('/staff/pages/show.php?event=Your new page was successfully created!&id=' . u(h($id))));
   } else {
     redirect_to(url_for('/staff/pages/new.php?event=' . mysqli_error($db)));
   }
@@ -108,7 +108,7 @@ function update_subject($subject)
   //exit($sql);
   $result = mysqli_query($db, $sql);
   if ($result) {
-    redirect_to(url_for("/staff/subjects/show.php?id=" . $subject['id'] . "&event=Editsuccessful"));
+    redirect_to(url_for("/staff/subjects/show.php?id=" . $subject['id'] . "&event=Editted data was successfully saved"));
   } else {
     $errors = [];
     $errors[] = mysqli_error($db);
@@ -139,7 +139,7 @@ function update_page($page)
   //exit($sql);
   $result = mysqli_query($db, $sql);
   if ($result) {
-    redirect_to(url_for("/staff/pages/show.php?id=" . $page['id'] . "&event=Editsuccessful"));
+    redirect_to(url_for("/staff/pages/show.php?id=" . $page['id'] . "&event=The edited data was successfully saved."));
   } else {
     $error = mysqli_error($db);
     mysqli_free_result($result);

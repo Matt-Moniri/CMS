@@ -1,5 +1,5 @@
-<?php require_once('../private/initialize.php');
-redirect_to(url_for('/staff/index.php')) ?>
+<?php require_once('private/initialize.php');
+redirect_to('public/staff/index.php') ?>
 <!--  -->
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->

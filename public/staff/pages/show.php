@@ -2,13 +2,17 @@
 <?php
 $id = $_GET['id'] ? $_GET['id'] : '1';
 $page = find_page_by_id($id);
-?>
+$event = $_GET['event'] ?? ""
+  ?>
 
 <?php $page_title = 'Show Page' ?>
 <?php include(SHARED_PATH . '/staff_header.php') ?>
 <div class="content">
   <a class="back-link" href="<?php echo url_for('/staff/pages/index.php') ?>">&laquo Back to List</a>
   <br>
+  <h2>
+    <?php echo $event ?>
+  </h2>
   <dl>
     <dt>ID: </dt>
     <dd>

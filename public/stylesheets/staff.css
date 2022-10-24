@@ -13,7 +13,7 @@ body {
 header {
   width: 980px;
   height: 40px;
-  margin: 0 0 10px 0;
+  margin: 0 0 0px 0;
   padding: 0;
   background: #0055DD;
   color: white;
@@ -31,7 +31,10 @@ navigation {
   width: 980px;
   margin: 0;
   padding: 0;
-  text-align: center;
+  text-align: left;
+  color: red;
+  background: #0055DD;
+
 }
 
 navigation ul {
@@ -39,11 +42,27 @@ navigation ul {
   list-style: none;
   padding: 0;
   margin: 0;
+  text-align: left;
+  background: #0055DD;
+
 }
 
 navigation ul li {
   display: inline;
   margin-right: 1em;
+}
+
+navigation a {
+  text-decoration: none;
+  color: #fff;
+}
+
+navigation a :visited {
+  color: #bce784;
+}
+
+#content a {
+  text-decoration: none;
 }
 
 #content {

@@ -3,7 +3,7 @@ var_dump(addslashes("=';:   |"));
 var_dump(mysqli_real_escape_string($db, "=';:  |"));
 $subjects_num = mysqli_num_rows(find_all_subjects());
 $subject = [];
-$last_event = $_GET['event'];
+$event = $_GET['event'];
 
 if (is_post_request()) {
   $subject['menu_name'] = $_POST['menu_name'];
@@ -27,7 +27,7 @@ if (is_post_request()) {
 
   <div class="subject new">
     <h3>
-      <?php echo $last_event ?>
+      <?php echo $event ?>
     </h3>
     <h1>
       <?php echo 'New Subject' ?>
