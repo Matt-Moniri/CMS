@@ -14,8 +14,7 @@ if (is_post_request()) {
   $subject['visible'] = $_POST['visible'];
   $errors = update_subject($subject);
 
-}
-else {
+} else {
   $subject = find_subject_by_id($subject['id']);
 }
 
@@ -23,7 +22,7 @@ else {
 ?>
 
 
-<?php $page_title = 'Edit Subject'?>
+<?php $page_title = 'Edit Subject' ?>
 <?php include(SHARED_PATH . '/staff_header.php'); ?>
 
 <div id="content">
@@ -32,16 +31,16 @@ else {
 
   <div class="subject edit">
     <h3>
-      <?php echo $last_event?>
+      <?php echo $last_event ?>
     </h3>
     <h1>
-      <?php echo 'Edit Subject for id:' . $subject['id']?>
+      <?php echo 'Edit Subject' ?>
     </h1>
     <?php echo display_errors($errors); ?>
-    <form action="<?php echo url_for('/staff/subjects/edit.php?id=' . h(u($subject['id'])))?>" method="post">
+    <form action="<?php echo url_for('/staff/subjects/edit.php?id=' . h(u($subject['id']))) ?>" method="post">
       <dl>
         <dt>Menu Name</dt>
-        <dd><input type="text" name="menu_name" value="<?php echo h($subject['menu_name'])?>" /></dd>
+        <dd><input type="text" name="menu_name" value="<?php echo h($subject['menu_name']) ?>" /></dd>
       </dl>
       <dl>
         <dt>Position</dt>
@@ -51,7 +50,7 @@ else {
 for ($i = 1; $i < $subjects_num + 1; $i++) {
   echo "<option value=" . $i . ">" . $i . "</option>";
 
-}?>
+            } ?>
           </select>
         </dd>
       </dl>
@@ -61,7 +60,7 @@ for ($i = 1; $i < $subjects_num + 1; $i++) {
 
           <!-- // the below is a teqnique to prevent php dispaching the "visible" with no value -->
           <input type="hidden" name="visible" value="0" />
-          <input type="checkbox" name="visible" value="1" <?php echo $subject['visible'] === '1' ? 'checked' : ''?>/>
+          <input type="checkbox" name="visible" value="1" <?php echo $subject['visible']==='1' ? 'checked' : '' ?>/>
         </dd>
       </dl>
       <div id="operations">

@@ -70,6 +70,10 @@ function insert_new_subject($subject)
 
 function insert_new_page($page)
 {
+  $errors = validate_page($page);
+  if (!empty($errors)) {
+    return $errors;
+  }
   global $db;
   $sql = "INSERT INTO pages (name,position,visible,subject_id,content) ";
   $sql .= "VALUES ('" . $page['name'] . "','";
@@ -119,6 +123,10 @@ function update_subject($subject)
 }
 function update_page($page)
 {
+  $errors = validate_page($page);
+  if (!empty($errors)) {
+    return $errors;
+  }
   global $db;
   $sql = "UPDATE pages ";
   $sql .= "SET name='" . mysqli_real_escape_string($db, $page['name']) . "', ";
@@ -186,6 +194,37 @@ function validate_subject($subject)
   // visible
   // Make sure we are working with a string
   $visible_str = (string) $subject['visible'];
+  if (!has_inclusion_of($visible_str, ["0", "1"])) {
+    $errors[] = "Visible must be true or false.";
+  }
+
+  return $errors;
+}
+
+function validate_page($page)
+{
+  $errors = [];
+
+  // menu_name
+  if (is_blank($page['name'])) {
+    $errors[] = "Name cannot be blank.";
+  } elseif (!has_length($page['name'], ['min' => 2, 'max' => 255])) {
+    $errors[] = "Name must be between 2 and 255 characters.";
+  }
+
+  // position
+  // Make sure we are working with an integer
+  $postion_int = (int) $page['position'];
+  if ($postion_int <= 0) {
+    $errors[] = "Position must be greater than zero.";
+  }
+  if ($postion_int > 999) {
+    $errors[] = "Position must be less than 999.";
+  }
+
+  // visible
+  // Make sure we are working with a string
+  $visible_str = (string) $page['visible'];
   if (!has_inclusion_of($visible_str, ["0", "1"])) {
     $errors[] = "Visible must be true or false.";
   }
