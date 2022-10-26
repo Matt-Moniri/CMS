@@ -9,7 +9,7 @@ echo "created=" . $_SERVER['DOCUMENT_ROOT'] . '/private/initialize.php';
 <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <?php $page_title = 'Staff Menu'; ?>
 <?
-php include(SHARED_PATH . '/staff_header.php')
+//php include(SHARED_PATH . '/staff_header.php')
 ?>
 
 
