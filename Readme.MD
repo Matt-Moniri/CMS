@@ -1,5 +1,10 @@
 # A Content Manegement Suystem using PHP and MySQL
 
+## Link to app
+
+To see the app working please go to
+<https://mmbank.herokuapp.com/>
+
 ## Preparation for hosting the project on a server
 
 ### 1. copy the project

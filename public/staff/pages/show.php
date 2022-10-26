@@ -1,4 +1,5 @@
 <?php
+
 if (strpos($_SERVER['SERVER_NAME'], "herokuapp.com")) {
   require_once($_SERVER['DOCUMENT_ROOT'] . '/private/initialize.php');
 } else {
