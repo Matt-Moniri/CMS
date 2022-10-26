@@ -1,4 +1,5 @@
-<?php require_once('../../../private/initialize.php');
+<?php
+require_once($_SERVER['DOCUMENT_ROOT'] . '/private/initialize.php');
 if (!isset($_GET['id'])) {
   redirect_to(url_for('staff/pages/index.php'));
 }
@@ -51,7 +52,7 @@ if (is_post_request()) {
 for ($i = 1; $i < $pages_num + 1; $i++) {
   echo "<option value=" . $i . ">" . $i . "</option>";
 
-} ?>
+            } ?>
           </select>
         </dd>
       </dl>
@@ -63,7 +64,7 @@ for ($i = 1; $i < $pages_num + 1; $i++) {
             <?php for ($i = 1; $i < 3 + 1; $i++) {
   $selected = $i == $page['subject_id'] ? "selected" : "no";
   echo "<option " . $selected . " value=" . $i . ">" . $i . "</option>";
-            } ?>
+} ?>
 
 
 
@@ -78,7 +79,7 @@ for ($i = 1; $i < $pages_num + 1; $i++) {
 
           <!-- // the below is a teqnique to prevent php dispaching the "visible" with no value -->
           <input type="hidden" name="visible" value="0" />
-          <input type="checkbox" name="visible" value="1" <?php echo $page['visible'] === '1' ? 'checked' : '' ?>/>
+          <input type="checkbox" name="visible" value="1" <?php echo $page['visible']==='1' ? 'checked' : '' ?>/>
         </dd>
       </dl>
       <div id="operations">

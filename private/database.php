@@ -3,11 +3,8 @@ require_once('db_credentials.php');
 
 function connect_to_db()
 {
-  echo ('1con');
   $connection = mysqli_connect(DB_HOST2, DB_USER2, DB_PASSWORD2, DB_NAME2);
-  echo ('<br>2con');
   $connect_error = confirm_db_connect();
-  echo ('<br>3con');
 
   if ($connect_error) {
     exit($connect_error);

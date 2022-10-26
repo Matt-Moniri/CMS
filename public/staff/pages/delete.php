@@ -1,4 +1,5 @@
-<?php require_once('../../../private/initialize.php');
+<?php
+require_once($_SERVER['DOCUMENT_ROOT'] . '/private/initialize.php');
 $page_title = "Delete Page";
 $page = [];
 $page['id'] = $_GET['id'];
