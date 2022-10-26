@@ -10,6 +10,7 @@ function connect_to_db()
     $connect_error = confirm_db_connect();
   }
   if ($connect_error) {
+    echo ("second error");
     var_dump($connect_error);
     exit($connect_error);
   }
