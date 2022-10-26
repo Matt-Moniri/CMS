@@ -33,5 +33,5 @@ echo url_for('staff/subjects/index.php')
   </div>
 
 </div>
-<?php //include(SHARED_PATH . '/staff_footer.php')
+<?php include(SHARED_PATH . '/staff_footer.php');
 ?>
