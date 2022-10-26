@@ -3,7 +3,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/private/initialize.php');
 ?>
 
 <?php
-//$pages_set = find_all_pages();
+$pages_set = find_all_pages();
 
 ?>
 
