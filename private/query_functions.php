@@ -11,6 +11,7 @@ function find_all_subjects()
 
 function find_all_pages()
 {
+  echo ("find_all_pages()");
   global $db;
   $sql = "SELECT * FROM pages ";
   $sql .= "ORDER BY subject_id ASC, position ASC ";
