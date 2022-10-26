@@ -22,10 +22,11 @@ define("WWW_ROOT", $doc_root);
 // define("WWW_ROOT", $doc_root);
 ?>
 <?php
-require_once('functions.php');
-require_once('database.php');
-require_once('validation_functions.php');
-require_once('query_functions.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/private/functions.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/private/database.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/private/validation_functions.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/private/query_functions.php');
+
 $db = connect_to_db();
 $errors = [];
 ?>
