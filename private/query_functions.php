@@ -13,11 +13,14 @@ function find_all_pages()
 {
 
   global $db;
+  echo ("<br>1");
   $sql = "SELECT * FROM pages ";
   $sql .= "ORDER BY subject_id ASC, position ASC ";
+  echo ("<br>2");
   $result_set = mysqli_query($db, $sql);
-  echo ("find_all_pages()");
+  echo ("<br>3");
   confirm_result_set($result_set);
+  echo ("<br>4");
   return $result_set;
 }
 
