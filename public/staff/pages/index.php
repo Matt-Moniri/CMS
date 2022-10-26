@@ -1,4 +1,6 @@
-<?php require_once('../../../private/initialize.php'); ?>
+<?php
+require_once($_SERVER['DOCUMENT_ROOT'] . '/private/initialize.php');
+?>
 <?php $pages_set = find_all_pages() ?>
 
 
