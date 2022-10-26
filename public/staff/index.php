@@ -1,5 +1,5 @@
 <?php
-//require_once('../../private/initialize.php'); 
+require_once($_SERVER['DOCUMENT_ROOT'] . '/private/initialize.php');
 ?>
 
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -8,7 +8,7 @@
 <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <?php $page_title = 'Staff Menu'; ?>
 <?
-//php include(SHARED_PATH . '/staff_header.php')
+php include(SHARED_PATH . '/staff_header.php')
 ?>
 
 
@@ -19,13 +19,13 @@
     <ul>
       <li>
         <a href="<?php
-//echo url_for('staff/pages/index.php')
-?>">Pages</a>
+echo url_for('staff/pages/index.php')
+  ?>">Pages</a>
       </li>
       <li>
         <a href="<?php
-//echo url_for('staff/subjects/index.php')
-?>">Subjects</a>
+echo url_for('staff/subjects/index.php')
+  ?>">Subjects</a>
       </li>
     </ul>
   </div>
