@@ -3,8 +3,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/private/initialize.php');
 ?>
 
 <?php
-$pages_set = find_all_pages();
-exit("query worked");
+//$pages_set = find_all_pages();
 
 ?>
 
@@ -35,7 +34,7 @@ exit("query worked");
         <th>&nbsp;</th>
         <th>&nbsp;</th>
       </tr>
-
+      <!-- 
       <?php while ($page = mysqli_fetch_assoc($pages_set)) { ?>
       <tr>
         <td>
@@ -61,10 +60,11 @@ exit("query worked");
         </td>
       </tr>
       <?php
-} ?>
+} ?> -->
 
     </table>
-    <?php mysqli_free_result($pages_set);
+    <?php
+//mysqli_free_result($pages_set);
 ?>
   </div>
 </div>
