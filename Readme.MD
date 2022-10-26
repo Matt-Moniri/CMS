@@ -13,3 +13,4 @@ after that login into mysql and ceate an empty database called mmbank:
 CREATE DATABASE mmbank;
 then log out of mysql and use the following code to import the mmbank database into your mysql server:
 ./mysql -uroot -pmysql mmbank < mmbank.sql
+if error occurs, use PHPMyAdmin or MySQLWorkbench to import the mmbank.sql into your MySQL, they may help.
