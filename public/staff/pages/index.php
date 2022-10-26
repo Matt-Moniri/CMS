@@ -1,7 +1,11 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'] . '/private/initialize.php');
 ?>
-<?php $pages_set = find_all_pages() ?>
+
+<?php
+exit("require worked");
+$pages_set = find_all_pages();
+?>
 
 
 
