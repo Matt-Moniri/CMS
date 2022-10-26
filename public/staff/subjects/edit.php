@@ -1,5 +1,9 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'] . '/private/initialize.php');
+if (strpos($_SERVER['SERVER_NAME'], "herokuapp.com")) {
+  require_once($_SERVER['DOCUMENT_ROOT'] . '/private/initialize.php');
+} else {
+  require_once('../../../private/initialize.php');
+}
 if (!isset($_GET['id'])) {
   redirect_to(url_for('staff/subjects/index.php'));
 }
@@ -51,7 +55,7 @@ if (is_post_request()) {
 for ($i = 1; $i < $subjects_num + 1; $i++) {
   echo "<option value=" . $i . ">" . $i . "</option>";
 
-} ?>
+            } ?>
           </select>
         </dd>
       </dl>
@@ -61,7 +65,7 @@ for ($i = 1; $i < $subjects_num + 1; $i++) {
 
           <!-- // the below is a teqnique to prevent php dispaching the "visible" with no value -->
           <input type="hidden" name="visible" value="0" />
-          <input type="checkbox" name="visible" value="1" <?php echo $subject['visible'] === '1' ? 'checked' : '' ?>/>
+          <input type="checkbox" name="visible" value="1" <?php echo $subject['visible']==='1' ? 'checked' : '' ?>/>
         </dd>
       </dl>
       <div id="operations">

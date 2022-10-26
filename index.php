@@ -12,14 +12,11 @@ echo ("created=" . $_SERVER['DOCUMENT_ROOT'] . '/private/initialize.php');
 echo "<br>";
 echo ('$_SERVER["SERVER_NAME"]=' . $_SERVER['SERVER_NAME']);
 echo "<br>";
-exit();
 
 //$pos = strpos($_SERVER['SCRIPT_NAME'], 'index');
 //echo (substr($_SERVER['SCRIPT_NAME'], 0, $pos));
 
-require_once($_SERVER['DOCUMENT_ROOT'] . '/private/initialize.php');
-echo '<br> requre done';
-redirect_to('/public/staff/index.php');
+redirect_to('public/staff/index.php');
 ?>
 <!--  -->
 <!DOCTYPE html>

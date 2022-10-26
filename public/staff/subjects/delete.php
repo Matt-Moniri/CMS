@@ -1,5 +1,9 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'] . '/private/initialize.php');
+if (strpos($_SERVER['SERVER_NAME'], "herokuapp.com")) {
+  require_once($_SERVER['DOCUMENT_ROOT'] . '/private/initialize.php');
+} else {
+  require_once('../../../private/initialize.php');
+}
 $page_title = "Delete subject";
 $subject = [];
 $subject['id'] = $_GET['id'];

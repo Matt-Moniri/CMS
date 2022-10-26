@@ -1,5 +1,9 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'] . '/private/initialize.php');
+if (strpos($_SERVER['SERVER_NAME'], "herokuapp.com")) {
+  require_once($_SERVER['DOCUMENT_ROOT'] . '/private/initialize.php');
+} else {
+  require_once('../../../private/initialize.php');
+}
 var_dump(addslashes("=';:   |"));
 var_dump(mysqli_real_escape_string($db, "=';:  |"));
 $subjects_num = mysqli_num_rows(find_all_subjects());
@@ -48,8 +52,8 @@ for ($i = 1; $i < $subjects_num + 1 + 1; $i++) {
   $selected = $i == $page['position'] ? "selected" : "no";
 
   echo "<option " . $selected . " value=" . $i . ">" . $i . "</option>";
-}
-?>
+            }
+            ?>
           </select>
         </dd>
       </dl>
@@ -59,7 +63,7 @@ for ($i = 1; $i < $subjects_num + 1 + 1; $i++) {
 
           <!-- // the below is a teqnique to prevent php dispaching the "visible" with no value -->
           <input type="hidden" name="visible" value="0" />
-          <input type="checkbox" name="visible" value="1" <?php echo $subject['visible']==='1' ? 'checked' : '' ?>/>
+          <input type="checkbox" name="visible" value="1" <?php echo $subject['visible'] === '1' ? 'checked' : '' ?>/>
         </dd>
       </dl>
       <div id="operations">
