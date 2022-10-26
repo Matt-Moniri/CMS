@@ -1,5 +1,5 @@
 <?php
-//require_once('private/initialize.php');
+require_once('https://mmbank.herokuapp.com/private/initialize.php');
 //redirect_to('public/staff/index.php')
 ?>
 <!--  -->
