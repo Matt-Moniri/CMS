@@ -34,7 +34,7 @@ $pages_set = find_all_pages();
         <th>&nbsp;</th>
         <th>&nbsp;</th>
       </tr>
-      <!-- 
+
       <?php while ($page = mysqli_fetch_assoc($pages_set)) { ?>
       <tr>
         <td>
@@ -60,7 +60,7 @@ $pages_set = find_all_pages();
         </td>
       </tr>
       <?php
-} ?> -->
+} ?>
 
     </table>
     <?php
