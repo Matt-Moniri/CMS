@@ -11,7 +11,7 @@ echo "<br>";
 
 require_once($_SERVER['DOCUMENT_ROOT'] . '/private/initialize.php');
 echo '<br> requre done';
-redirect_to($_SERVER['DOCUMENT_ROOT'] . '/public/staff/index.php');
+//redirect_to($_SERVER['DOCUMENT_ROOT'] . '/public/staff/index.php');
 ?>
 <!--  -->
 <!DOCTYPE html>
