@@ -11,11 +11,12 @@ function find_all_subjects()
 
 function find_all_pages()
 {
-  echo ("find_all_pages()");
+
   global $db;
   $sql = "SELECT * FROM pages ";
   $sql .= "ORDER BY subject_id ASC, position ASC ";
   $result_set = mysqli_query($db, $sql);
+  echo ("find_all_pages()");
   confirm_result_set($result_set);
   return $result_set;
 }
