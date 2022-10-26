@@ -28,6 +28,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/private/database.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/private/validation_functions.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/private/query_functions.php');
 
-//$db = connect_to_db();
+$db = connect_to_db();
 $errors = [];
 ?>
