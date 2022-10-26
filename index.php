@@ -1,4 +1,11 @@
 <?php
+if (strpos($_SERVER['SERVER_NAME'], "herokuapp.com")) {
+  echo ('heroku <br>');
+  //require_once($_SERVER['DOCUMENT_ROOT'] . '/private/initialize.php');
+} else {
+  echo ('local <br>');
+  //require_once('./private/initialize.php');
+}
 echo ('$_SERVER["DOCUMENT_ROOT"]=' . $_SERVER['DOCUMENT_ROOT']);
 echo "<br>";
 echo ('$_SERVER["SCRIPT_NAME"]=' . $_SERVER['SCRIPT_NAME']);
