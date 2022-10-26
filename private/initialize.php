@@ -3,8 +3,8 @@ ob_start();
 // Assign file paths to PHP constants
 // __FILE__ returns the current path to this file
 // dirname() returns the path to the parent directory
-//define("PRIVATE_PATH", dirname(__FILE__));
-define("PRIVATE_PATH", $_SERVER['DOCUMENT_ROOT'] . '/private');
+define("PRIVATE_PATH", dirname(__FILE__));
+//define("PRIVATE_PATH", $_SERVER['DOCUMENT_ROOT'] . '/private');
 define("PROJECT_PATH", dirname(PRIVATE_PATH));
 define("PUBLIC_PATH", PROJECT_PATH . '/public');
 define("SHARED_PATH", PRIVATE_PATH . '/shared');
@@ -23,10 +23,10 @@ define("WWW_ROOT", $doc_root);
 // define("WWW_ROOT", $doc_root);
 ?>
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'] . '/private/functions.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/private/database.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/private/validation_functions.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/private/query_functions.php');
+require_once(PRIVATE_PATH . '/functions.php');
+require_once(PRIVATE_PATH . '/database.php');
+require_once(PRIVATE_PATH . '/validation_functions.php');
+require_once(PRIVATE_PATH . '/query_functions.php');
 
 $db = connect_to_db();
 $errors = [];
