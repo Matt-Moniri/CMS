@@ -1,7 +1,7 @@
 <?php
-echo ('$_SERVER["DOCUMENT_ROOT"]=' . $_SERVER['DOCUMENT_ROOT'] . '/private/initialize.php');
+echo ('$_SERVER["DOCUMENT_ROOT"]=' . $_SERVER['DOCUMENT_ROOT']);
 echo "<br>";
-echo ('$_SERVER["SCRIPT_NAME"]=' . $_SERVER['SCRIPT_NAME'] . '/private/initialize.php');
+echo ('$_SERVER["SCRIPT_NAME"]=' . $_SERVER['SCRIPT_NAME']);
 echo "<br>";
 //$pos = strpos($_SERVER['SCRIPT_NAME'], 'index');
 //echo (substr($_SERVER['SCRIPT_NAME'], 0, $pos));
