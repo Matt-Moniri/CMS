@@ -1,6 +1,11 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'] . '/private/initialize.php');
-redirect_to('public/staff/index.php');
+echo ($_SERVER['DOCUMENT_ROOT'] . '/private/initialize.php');
+echo "<br>";
+$pos = strpos($_SERVER['SCRIPT_NAME'], 'index');
+echo (substr($_SERVER['SCRIPT_NAME'], 0, $pos));
+
+//require_once($_SERVER['DOCUMENT_ROOT'] . '/private/initialize.php');
+//redirect_to('public/staff/index.php');
 ?>
 <!--  -->
 <!DOCTYPE html>
