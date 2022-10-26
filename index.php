@@ -21,7 +21,7 @@
 
 <body>
   <h1>
-    public/index
+    root/index
     coming soon
   </h1>
   <!--[if lt IE 7]>
