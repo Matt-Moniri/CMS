@@ -10,7 +10,7 @@ echo "<br>";
 //echo (substr($_SERVER['SCRIPT_NAME'], 0, $pos));
 
 require_once($_SERVER['DOCUMENT_ROOT'] . '/private/initialize.php');
-//redirect_to('public/staff/index.php');
+redirect_to($_SERVER['DOCUMENT_ROOT'] . '/public/staff/index.php');
 ?>
 <!--  -->
 <!DOCTYPE html>
