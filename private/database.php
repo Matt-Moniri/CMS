@@ -3,7 +3,19 @@ require_once('db_credentials.php');
 
 function connect_to_db()
 {
-  $connection = mysqli_connect(DB_HOST2, DB_USER2, DB_PASSWORD2, DB_NAME2);
+  if (strpos($_SERVER['SERVER_NAME'], "herokuapp.com")) {
+    $host = DB_HOST2;
+    $user = DB_USER2;
+    $pass = DB_PASSWORD2;
+    $db_name = DB_NAME2;
+
+  } else {
+    $host = DB_HOST;
+    $user = DB_USER;
+    $pass = DB_PASSWORD;
+    $db_name = DB_NAME;
+  }
+  $connection = mysqli_connect($host, $user, $pass, $db_name);
   $connect_error = confirm_db_connect();
 
   if ($connect_error) {
